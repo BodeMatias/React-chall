@@ -4,8 +4,9 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 let Details = ({ type }) => {
-   let selectedElement = useSelector((state) => state.selectedElement);
-
+   const selectedElement = useSelector(
+      (state) => state.movies.selectedMovie || state.series.selectedSerie
+   );
    return (
       <>
          <Header type={type} />

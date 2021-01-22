@@ -5,21 +5,15 @@ import Error from "./components/Error";
 import Content from "./components/Content";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setElements } from "./reducers/EventsReducer";
-import useRequest from "./helper/useRequest";
 import Details from "./components/Details";
-import { GetMoviesAndSeriesThunkFunction } from "./redux-store/store";
+import { fetchData } from "./redux-store/thunk";
 
 function App() {
    const dispatch = useDispatch();
 
-   const { data, loading, error } = useRequest(
-      "https://raw.githubusercontent.com/StreamCo/react-coding-challenge/master/feed/sample.json"
-   );
-
    useEffect(() => {
-      dispatch(GetMoviesAndSeriesThunkFunction());
-   }, []);
+      dispatch(fetchData());
+   });
 
    return (
       <Router>
